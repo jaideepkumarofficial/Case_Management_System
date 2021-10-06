@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
             $_SESSION['sess_user']=$user;  
           */
             
-            header('location: new.html');  
+            header('location: Appointment.html');  
             }  
               
         }  

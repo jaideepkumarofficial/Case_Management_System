@@ -1,7 +1,7 @@
 <?php  
 require 'conn.php';
 if(isset($_POST['submit'])){  
-    if(!empty($_POST['email'])){  
+    if(!empty($_POST['name']) && !empty($_POST['number']) && !empty($_POST['email']) && !empty($_POST['dob'])){  
         $name=$_POST['name'];  
         $number=$_POST['number'];
         $email=$_POST['email'];  

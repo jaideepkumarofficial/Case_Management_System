@@ -54,38 +54,7 @@
 
                         </div>
                     </form>
-                    <?php  
-                        if(isset($_POST["submit"])){  
-                        if(!empty($_POST['mobile']) {  
-                            $name=$_POST['name'];  
-                            $number=$_POST['number'];  
-                            $email=$_POST['email'];  
-                            $dob=$_POST['dob'];
-                            $con=mysql_connect('localhost','root','') or die(mysql_error());  
-                            mysql_select_db('case_management_system') or die("cannot select DB");  
-                        
-                            $query=mysql_query("SELECT * FROM user WHERE mobile='".$mobile."'");  
-                            $numrows=mysql_num_rows($query);  
-                            if($numrows==0)  
-                            {  
-                            $sql="INSERT INTO user(name,number,email,dob) VALUES('$name','$number','$email','$'dob)";  
-                        
-                            $result=mysql_query($sql);  
-                                if($result){  
-                            echo "Account Successfully Created";  
-                            } else {  
-                            echo "Failure!";  
-                            }  
-                        
-                            } else {  
-                            echo "That username already exists! Please try again with another.";  
-                            }  
-                        
-                        } else {  
-                            echo "All fields are required!";  
-                        }  
-                        }  
-                        ?>
+                    
                 </div>
             </div>
         </div>
