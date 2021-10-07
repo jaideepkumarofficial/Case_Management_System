@@ -22,7 +22,7 @@
         <div class="container">
             <div class="booking-content">
                 <div class="booking-image">
-                    <img class="booking-img" src="img/feature.jpg" alt="Booking Image">
+                    <img class="booking-img" src="img/reg.jpg" alt="Booking Image">
                 </div>
                 <div class="booking-form">
                     <form action="Register.php" method="POST" id="booking-form">
@@ -44,13 +44,19 @@
                             <label for="phone" class="form-label">Your date of birth</label>
                         </div>
 
-
+                        <div class="form-group form-input">
+                            <input type="text" name="pass" id="pass" value="" required />
+                            <label for="name" class="form-label">Password</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" name="cpass" id="cpass" value="" required />
+                            <label for="name" class="form-label">Confirm Password</label>
+                        </div>
 
                         <div class="form-submit">
                             <input type="submit" value="Register" class="submit" id="submit" name="submit" />
                             <a href="login.html" class="vertify-booking">Login---></a>
-                            <a href="index.html" class="vertify-booking">
-                                <---Back< /a>
+                            <a href="index.html" class="vertify-booking"><---Back</a>
 
                         </div>
                     </form>

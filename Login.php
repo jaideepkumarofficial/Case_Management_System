@@ -1,5 +1,7 @@
 <?php  
+
 require 'conn.php';
+
 if(isset($_POST['submit'])){  
     if(!empty($_POST['number']) && !empty($_POST['dob'])) {  
         $number=$_POST['number'];  
@@ -14,7 +16,7 @@ if(isset($_POST['submit'])){
             $_SESSION['sess_user']=$user;  
           */
             
-            header('location: Appointment.html');  
+            header('location: Home.html');  
             }  
               
         }  
