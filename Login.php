@@ -3,14 +3,15 @@
 require 'conn.php';
 
 if(isset($_POST['submit'])){  
-    if(!empty($_POST['number']) && !empty($_POST['dob'])) {  
+   
+    if(!empty($_POST['number']) && !empty($_POST['pass'])) {  
         $number=$_POST['number'];  
-        $dob=$_POST['dob'];  
-        $query=mysqli_query($conn,"SELECT * FROM user WHERE number='".$number."' AND dob='".$dob."'");  
+        $pass=$_POST['pass'];  
+        $query=mysqli_query($conn,"SELECT * FROM user WHERE number='".$number."' AND pass='".$pass."'");  
         $numrows=mysqli_num_rows($query);  
         if($numrows!=0)  
         {
-            if($number == $number && $dob == $dob)  
+            if($number == $number && $pass == $pass)  
             {  
             /*session_start();  
             $_SESSION['sess_user']=$user;  
@@ -18,16 +19,15 @@ if(isset($_POST['submit'])){
             
             header('location: Home.html');  
             }  
-              
-        }  
-        else {  
+            else {  
             echo "Invalid username or password!";  
-            }  
+            } 
+        } 
           
-        } else {  
+    }else {  
             echo "All fields are required!";  
-        }  
-        }  
+             }  
+    }  
 ?>  
         
       

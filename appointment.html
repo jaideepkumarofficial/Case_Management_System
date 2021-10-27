@@ -160,22 +160,23 @@ a{color:inherit;text-decoration:none}
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Appointment Booking</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
 		<div class="login-form">
+			<form method="post" action="appointment.php" autocomplete="on">
 			<div class="sign-in-htm">
 				<div class="group">
 					<label for="user" class="label">Full Name</label>
-					<input id="user" type="text" class="input">
+					<input name="name" type="text" class="input">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Phone Number</label>
-					<input id="pass" type="number" class="input" >
+					<input name="phone" type="number" class="input" >
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Email</label>
-					<input id="pass" type="email" class="input" >
+					<input name="email" type="email" class="input" >
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Case Type</label>
-					<select id="country" name="country" class="input" >
+					<select id="country" name="case_type" class="input" >
 						<option style="color: black;" value="Robbery">Robbery</option>
 						<option style="color: black;"value="Family">Family</option>
 						<option style="color: black;"value="Labour">Labour</option>
@@ -184,11 +185,11 @@ a{color:inherit;text-decoration:none}
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Date</label>
-					<input id="pass" type="date" class="input" >
+					<input name="date" type="date" class="input" >
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Time</label>
-					<select id="country" name="country" class="input" >
+					<select id="country" name="time" class="input" >
 						<option style="color: black;" value="10-11am">10-11am</option>
 						<option style="color: black;"value="11-12pm">11-12pm</option>
 						<option style="color: black;"value="12-1pm">12-1pm</option>
@@ -197,8 +198,14 @@ a{color:inherit;text-decoration:none}
 						<option style="color: black;"value="04-5pm">04-5pm</option>
 					  </select>
 				</div>
+
 				<div class="group">
-					<input type="submit" class="button" value="Book Appointment">
+					<label for="" class="label">Details</label>
+					<textarea name="details" type="TextArea" class="input"></textarea>
+				</div>
+
+				<div class="group">
+					<input type="submit" class="button" value="submit" name="submit">
 				</div>
 				<div class="hr"></div>
 				
@@ -206,6 +213,7 @@ a{color:inherit;text-decoration:none}
 					<a href="index.html">Home</a>
 				</div>
 			</div>
+		</form>
 		</div>	
 	</div>
 			

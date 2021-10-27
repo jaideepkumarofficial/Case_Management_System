@@ -1,19 +1,18 @@
 <?php  
 require 'conn.php';
-if(isset($_POST['submit'])){  
-    if(!empty($_POST['name']) && !empty($_POST['number']) && !empty($_POST['email']) && !empty($_POST['dob'])){  
+if(isset($_POST['signup'])){  
+    if(!empty($_POST['name']) && !empty($_POST['number']) && !empty($_POST['email'])  && !empty($_POST['pass'])){  
         $name=$_POST['name'];  
         $number=$_POST['number'];
         $email=$_POST['email'];  
-        $dob=$_POST['dob'];  
-        $query=mysqli_query($conn,"SELECT * FROM user WHERE email='".$email."'");  
+        $pass=$_POST['pass'];
+        $query=mysqli_query($conn,"SELECT * FROM user WHERE number='".$number."'");  
         $numrows=mysqli_num_rows($query);  
         if($numrows==0)  
         {  
-        $sql="INSERT INTO user(name,number,email,dob) VALUES('$name','$number','$email','$dob')";  
+        $sql="INSERT INTO user(name,number,email,pass) VALUES('$name','$number','$email','$pass')";  
         if(mysqli_query($conn,$sql))
           {
-       
             header('location: Login.html');  
         } else {  
         echo "Failure!";  
@@ -25,6 +24,6 @@ if(isset($_POST['submit'])){
       
     } else {  
         echo "All fields are required!";  
-    }  
+        }  
     }  
     ?>  
