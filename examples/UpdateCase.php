@@ -59,7 +59,7 @@
             </a>
           </li>
           <li>
-            <a href="./UpdateCase.html">
+            <a href="./UpdateCase.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Update Case</p>
             </a>
@@ -73,7 +73,7 @@
           <li>
             <a href="./EditProfil.html">
               <i class="nc-icon nc-spaceship"></i>
-              <p>Edit Profil</p>
+              <p>Edit Profile</p>
             </a>
           </li>
           
@@ -100,9 +100,10 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
+            <form action="" method="post">
               <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search..."><button style="border: none;">
+                <input type="text" value="" class="form-control" name="cnr_no" placeholder="Search...">
+                <button style="border: none;" name="fetch">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <i class="nc-icon nc-zoom-split"></i>
@@ -154,24 +155,43 @@
                 <h5 class="card-title">Case Details</h5>
               </div>
               <div class="card-body">
-                <form>
+                <form action ="updatecase1.php" method="post">
+                  <?php
+                  require 'conn.php';
+                  
+                  if(isset($_POST['fetch']))
+                  
+                  {
+                    
+                    $cnr_no = $_POST['cnr_no'];
+                    $query=mysqli_query($conn,"SELECT * FROM newcase WHERE cnr_no='".$cnr_no."'");  
+                    $numrows=mysqli_num_rows($query);  
+                    
+                    if($numrows > 0)
+                    {
+                      while($row = mysqli_fetch_array($query))   
+                {
+                  
+                  ?>
+                      
+                  
                   <div class="row">
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
                         <label>Case Type</label>
-                        <input type="text" class="form-control"  placeholder="Property" >
+                        <input type="text" class="form-control" value="<?php echo $row['case_type'];?>" name="case_type" placeholder="Property" ></label>
                       </div>
                     </div>
                     <div class="col-md-3 px-1">
                       <div class="form-group">
                         <label>Filing Number</label>
-                        <input type="text" class="form-control" placeholder="123456789" >
+                        <input type="text" class="form-control" value="<?php echo $row['filing_number'];?>" name="filing_number" placeholder="123456789" >
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Filing Date</label>
-                        <input type="date" class="form-control" placeholder="Date">
+                        <input type="date" class="form-control" value="<?php echo $row['filing_date'];?>" name="filing_date" placeholder="Date">
                       </div>
                     </div>
                   </div>
@@ -179,19 +199,19 @@
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
                         <label>Registeration Number</label>
-                        <input type="text" class="form-control" placeholder="11111/22222" >
+                        <input type="text" class="form-control" name="reg_no" value="<?php echo $row['reg_no'];?>" placeholder="11111/22222" >
                       </div>
                     </div>
                     <div class="col-md-3 px-1">
                       <div class="form-group">
                         <label>Registeration Date</label>
-                        <input type="date" class="form-control" placeholder="Username" value="michael23">
+                        <input type="date" class="form-control" name="reg_date" value="<?php echo $row['reg_date'];?>" placeholder="Username" value="michael23">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label for="exampleInputEmail1">CNR Number</label>
-                        <input type="email" class="form-control" placeholder="KABC6565656565">
+                        <input type="text" class="form-control" value="<?php echo $row['cnr_no'];?>" name="cnr_no" placeholder="KABC6565656565">
                       </div>
                     </div>
                   </div>
@@ -200,13 +220,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>First Hearing Date</label>
-                        <input type="date" class="form-control" placeholder="Company" value="Chet">
+                        <input type="date" class="form-control" name="first_hearing_date" value="<?php echo $row['first_hearing_date'];?>" placeholder="Company" value="Chet">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Next Hearing Date</label>
-                        <input type="date" class="form-control" placeholder="Last Name" value="Faker">
+                        <input type="date" class="form-control" name="next_hearing_date" value="<?php echo $row['next_hearing_date'];?>" placeholder="Last Name" value="Faker">
                       </div>
                     </div>
                   </div>
@@ -214,13 +234,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Stage of Case</label>
-                        <input type="text" class="form-control" placeholder="SUMMONS">
+                        <input type="text" class="form-control" name="stage_case" value="<?php echo $row['stage_case'];?>" placeholder="SUMMONS">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Court Number</label>
-                        <input type="text" class="form-control" placeholder="123456789" >
+                        <input type="text" class="form-control" name="court_name" value="<?php echo $row['court_name'];?>" placeholder="123456789" >
                       </div>
                     </div>
                   </div>
@@ -229,13 +249,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Name (Case holder)</label>
-                        <input type="text" class="form-control" placeholder="RAJ">
+                        <input type="text" class="form-control" name="pname" value="<?php echo $row['pname'];?>" placeholder="RAJ">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Advocate Name</label>
-                        <input type="text" class="form-control" placeholder="KUMAR" >
+                        <input type="text" class="form-control" name="paname" value="<?php echo $row['paname'];?>" placeholder="KUMAR" >
                       </div>
                     </div>
                   </div>
@@ -244,13 +264,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Name (Opposite Case holder)</label>
-                        <input type="text" class="form-control" placeholder="RAJ">
+                        <input type="text" class="form-control" name="rname" value="<?php echo $row['rname'];?>" placeholder="RAJ">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Advocate Name</label>
-                        <input type="text" class="form-control" placeholder="KUMAR" >
+                        <input type="text" class="form-control" name="raname" value="<?php echo $row['raname'];?>" placeholder="KUMAR" >
                       </div>
                     </div>
                   </div>
@@ -261,20 +281,20 @@
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label>IA Number</label>
-                        <input type="text" class="form-control" placeholder="123456" >
+                        <input type="text" class="form-control" name="ia_no" value="<?php echo $row['ia_no'];?>" placeholder="123456" >
                       </div>
                     </div>
                     
                     <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>Party</label>
-                        <input type="text" class="form-control" placeholder="RAJ">
+                        <input type="text" class="form-control" name="party" value="<?php echo $row['party'];?>" placeholder="RAJ">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Date of Filing</label>
-                        <input type="date" class="form-control" placeholder="">
+                        <input type="date" class="form-control" name="date_of_filing" value="<?php echo $row['date_of_filing'];?>" placeholder="">
                       </div>
                     </div>
                   </div>
@@ -283,13 +303,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Judge</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="jname"  class="form-control">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Business on Date</label>
-                        <input type="text" class="form-control"  >
+                        <input type="text" class="form-control" name="b_on_date" >
                       </div>
                     </div>
                   </div>
@@ -297,19 +317,24 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Hearing Date</label>
-                        <input type="text" class="form-control">
+                        <input type="date" class="form-control" name="h_date">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Puropse of Hearing</label>
-                        <input type="text" class="form-control"  >
+                        <input type="text" class="form-control" name="p_hearing" >
                       </div>
                     </div>
                   </div>
+                  <?php
+                }
+              }
+            }
+          ?>
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round">ADD CASE</button>
+                      <button type="submit" name="add1" class="btn btn-primary btn-round">ADD CASE</button>
                     </div>
                   </div>
                 </form>
