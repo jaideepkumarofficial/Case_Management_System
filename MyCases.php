@@ -181,68 +181,93 @@ table, th, td {
 </style>
   </head>
 <body>
+
 <div class="login-wrap">
 	<div class="login-html">
 		<h2 style="color:thistle;align-items: center;">Case History</h2>
 
 <p>PRL. CITY CIVIL AND SESSION JUDGE</p>
+
 <button type="button" class="collapsible" style="border-color: red;border-style:groove;">CASE DETAILS</button>
 <div class="content">
+	
 	<table style="width:50%">
+
+
+
+<?php
+                  require 'conn.php';
+
+				  $cnr_no= $_POST['cnr_no'];
+                    
+					
+                    $query=mysqli_query($conn,"SELECT * FROM newcase WHERE cnr_no='".$cnr_no."'");  
+                    $numrows=mysqli_num_rows($query);  
+                    if($numrows > 0)
+                    {
+                      while($row = mysqli_fetch_array($query))   
+                {
+                  
+                  ?>
+				  
+				  
+                  
+        
 		<tr><br>
 			  <td style="color:black"><b>Case Type<b></td>
-			  <td></td>
+			  
+			  <td><?php echo $row['case_type'];?></td>
 			  
 		</tr>
 		<tr>
 			  <td style="color:black"><b>Filing Number<b></td>
-			  <td></td>
+			  <td><?php echo $row['filing_number'];?></td>
 			  
 		</tr>
 	   <tr>
 			  <td style="color:black"><b>Filing Date<b></td>
-			  <td></td>
+			  <td><?php echo $row['filing_date'];?></td>
 			  
 		</tr>
 		<tr>
 			  <td style="color:black"><b>Registeration Number<b></td>
-			  <td></td>
+			  <td><?php echo $row['reg_no'];?></td>
 			  
 		</tr>
 		<tr>
 			  <td style="color:black"><b>Registeration Date<b></td>
-			  <td></td>
+			  <td><?php echo $row['reg_date'];?></td>
 			  
 		</tr>
 	   <tr>
 			  <td style="color:black"><b>CNR Number<b></td>
-			  <td></td>
+			  <td><?php echo $row['cnr_no'];?></td>
 			  
 		</tr>
 	  </table><br></div>
-
+	  
 <p></p>
 <button type="button" class="collapsible" style="border-color: red;border-style:groove;">CASE STATUS</button>
 <div class="content">
 	<table style="width:50%"><br>
 		<tr>
 			  <td style="color:black"><b>First Hearing Date<b></td>
-			  <td></td>
+			  <td><?php echo $row['first_hearing_date'];?></td>
 			  
 		</tr>
 		<tr>
 			  <td style="color:black"><b>Next Hearing Date<b></td>
-			  <td></td>
+			  <td><?php echo $row['next_hearing_date'];?></td>
 			  
 		</tr>
 	   <tr>
 			  <td style="color:black"><b>Stage of Case<b></td>
-			  <td></td>
+			  <td><?php echo $row['stage_case'];?></td>
 			  
 		</tr>
 		<tr>
 			  <td style="color:black"><b>Court No and Judge<b></td>
-			  <td></td>
+			  <td><?php echo $row['court_name'];?></td>
 			  
 		</tr>
 	  </table><br></div><p></p>
@@ -251,12 +276,12 @@ table, th, td {
 	<table style="width:50%"><br>
 		<tr>
 			  <td style="color:black"><b>Petitioner<b></td>
-			  <td></td>
+			  <td><?php echo $row['pname'];?></td>
 			  
 		</tr>
 		<tr>
 			  <td style="color:black"><b>Advocate<b></td>
-			  <td></td>
+			  <td><?php echo $row['paname'];?></td>
 			  
 		</tr></table><br></div><p></p>
 <button type="button" class="collapsible" style="border-color: red;border-style:groove;">RESPONDENT AND ADVOCATE</button>
@@ -264,12 +289,12 @@ table, th, td {
  <table style="width:50%"><br>
 	<tr>
 		  <td style="color:black"><b>Respondent<b></td>
-		  <td></td>
+		  <td><?php echo $row['rname'];?></td>
 		  
 	</tr>
 	<tr>
 		  <td style="color:black"><b>Advocate<b></td>
-		  <td></td>
+		  <td><?php echo $row['raname'];?></td>
 		  
 	</tr></table><br>
 </div><p></p>
@@ -278,31 +303,42 @@ table, th, td {
 	<table style="width:50%"><br>
 		<tr>
 			  <td style="color:black"><b>IA Number<b></td>
-			  <td style="color:black"><b>Party</b></td><td style="color:black"><b>Date of Filing</b></td><td style="color:black"><b>Next Date</b></td><td style="color:black"><b>IA Status</b></td>
-			  
-		</tr>
+			  <td style="color:black"><b>Party</b></td><td style="color:black"><b>Date of Filing</b></td></tr>
 		<tr>
-			  <td ></td>
-			  <td></td>
-			<td ></td>
-			  <td></td>
-			<td ></td>
+			  <td ><?php echo $row['ia_no'];?></td>
+			  <td><?php echo $row['party'];?></td>
+			<td ><?php echo $row['date_of_filing'];?></td>
 			  
 			  
-		</tr></table><br></div><p></p>
+			  
+		</tr><?php }} ?></table><br></div><p></p>
 <button type="button" class="collapsible" style="border-color: red;border-style:groove;">HISTORY OF CASE HEARING</button>
 <div class="content">
-	<table style="width:100%"><br>
+	<table style="width:100%"><br>	
 		<tr>
 			  <td style="color:black"><b>Judge<b></td><td style="color:black"><b>Business on Date<b></td><td style="color:black"><b>Hearing Date<b></td><td style="color:black"><b>Purpose of Hearing<b></td>
 			  
 			  
-		</tr>
+		</tr><?php
+                  require 'conn.php';
+                  
+                 
+				  $cnr_no= $_POST['cnr_no'];
+                    
+					
+                    $query=mysqli_query($conn,"SELECT * FROM updatecase WHERE cnr_no='".$cnr_no."'");  
+                    $numrows=mysqli_num_rows($query);  
+                    if($numrows > 0)
+                    {
+                      while($row = mysqli_fetch_array($query))   
+                {
+                  
+                  ?>
 		<tr>
-			  <td style="color:black"><b><b></td>
-			  <td></td><td></td><td></td><td></td>
+			  <td style="color:black"><?php echo $row['jname'];?></td>
+			  <td><?php echo $row['b_on_date'];?></td><td><?php echo $row['h_date'];?></td><td><?php echo $row['p_hearing'];?></td>
 			  
-		</tr>
+		</tr><?php }} ?>
 	   
 	  </table><br>  </div>
 

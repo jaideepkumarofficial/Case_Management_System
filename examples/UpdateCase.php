@@ -152,7 +152,7 @@
           <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Case Details</h5>
+                <h5 class="card-title">Search Case Details</h5>
               </div>
               <div class="card-body">
                 <form action ="updatecase1.php" method="post">
@@ -309,7 +309,7 @@
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Business on Date</label>
-                        <input type="text" class="form-control" name="b_on_date" >
+                        <input type="date" class="form-control" name="b_on_date" >
                       </div>
                     </div>
                   </div>
@@ -327,16 +327,17 @@
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                      <button type="submit" name="add1" class="btn btn-primary btn-round">Update CASE</button>
+                    </div>
+                  </div>
                   <?php
                 }
               }
             }
           ?>
-                  <div class="row">
-                    <div class="update ml-auto mr-auto">
-                      <button type="submit" name="add1" class="btn btn-primary btn-round">ADD CASE</button>
-                    </div>
-                  </div>
+                  
                 </form>
               </div>
             </div>

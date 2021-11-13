@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<?php	
+$x=$_POST['fnum'];
+$y=$_POST['snum'];
+$sum=$x+$y;
+?>
+ 
 <body>
-    <form action="" method="post">
-        
+<form method="post">
+Result  <input type="text" value="<?php echo @$sum;?>"/><hr/>
+Enter first number <input type="text" name="fnum"/><hr/>
+Enter second number <input type="text" name="snum"/><hr/>	   		   
+<input type="submit" value="ADD"/>
 </form>
 </body>
-</html>
